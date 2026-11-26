@@ -889,6 +889,26 @@ mod extra_sizes {
     // - MLKEM1024-RSA3072
     pub type U1966 = uint!(0 1 1 1 0 1 0 1 1 1 1);
 
+    // MLDSA Composite
+    pub type U1377 = uint!(1 0 0 0 0 1 1 0 1 0 1);    // MLDSA-44 Public Key (1312 + P256(65)
+    pub type U2017 = uint!(1 0 0 0 0 1 1 1 1 1 1);    // MLDSA-65 Public Key (1952) + P256 (65)
+    pub type U2049 = uint!(1 0 0 0 0 0 0 0 0 0 0 1);  // MLDSA-65 Public Key (1952) + P256 (97)
+    
+    pub type U2452 = uint!(0 0 1 0 1 0 0 1 1 0 0 1);
+    pub type U2484 = uint!(0 0 1 0 1 1 0 1 1 0 0 1);  // MLDSA-44 Signature (2420) + Ed25519 (64)
+    pub type U2689 = uint!(1 0 0 0 0 0 0 1 0 1 0 1);  // MLDSA-87 Public Key (2592) + P384(97)
+    pub type U2676 = uint!(0 0 1 0 1 1 1 0 0 1 0 1);  // MLDSA-44 Signature (2420) + RSA2048 (256)
+    
+    pub type U2725 = uint!(1 0 1 0 0 1 0 1 0 1 0 1);  // MLDSA-87 Public Key (2592) + P521(133)
+    pub type U3373 = uint!(1 0 1 1 0 1 0 0 1 0 1 1);
+    pub type U3693 = uint!(1 0 1 1 0 1 1 0 0 1 1 1);  // MLDSA-65 Signature(3309) + RSA3072 (384)
+    pub type U3821 = uint!(1 0 1 1 0 1 1 1 0 1 1 1);  // MLDSA-65 Signature(3309) + RSA4096 (512)
+    pub type U2649 = uint!(1 0 0 1 1 0 1 0 0 1 0 1);
+
+    pub type U4741 = uint!(1 0 1 0 0 0 0 1 0 1 0 0 1);  // MLDSA-87 Signature (4627) + Ed448(114)
+    pub type U5011 = uint!(1 1 0 0 1 0 0 1 1 1 0 0 1);  // MLDSA-87 Signature (4627) + RSA3072(384)
+    pub type U5139 = uint!(1 1 0 0 1 0 0 0 0 0 1 0 1);  // MLDSA-87 Signature (4627) + RSA4096(512)
+
 
 
 
@@ -1146,6 +1166,30 @@ mod extra_sizes {
         4627 => U4627,
         4896 => U4896,
     }
+    // ML-DSA composite size
+    impl_array_sizes! {
+        ml_dsa_composite,
+        //1344 => U1344,  // MLDSA-44 Public Key (1312) + Ed25519 (32)
+        1377 => U1377,  // MLDSA-44 Public Key (1312 + P256(65)
+        2484 => U2484,  // MLDSA-44 Signature (2420) + Ed25519 (64)
+        2676 => U2676,  // MLDSA-44 Signature (2420) + RSA2048 (256)
+        //1984 => U1984,  // MLDSA-65 Public Key (1952) + Ed25519 (32)
+        2017 => U2017,  // MLDSA-65 Public Key (1952) + P256 (65)
+        2049 => U2049,  // MLDSA-65 Public Key (1952) + P384 (97)
+        
+
+        3373 => U3373,  // MLDSA-65 Signature(3309) + Ed25519 (64)
+        3693 => U3693,  // MLDSA-65 Signature(3309) + RSA3072 (384)
+        3821 => U3821,  // MLDSA-65 Signature(3309) + RSA4096 (512)
+        2649 => U2649,  // MLDSA-87 Public Key (2592) + Ed448(57)
+        2689 => U2689,  // MLDSA-87 Public Key (2592) + P384(97)
+        2725 => U2725,  // MLDSA-87 Public Key (2592) + P521(133)
+        
+        4741 => U4741,  // MLDSA-87 Signature (4627) + Ed448(114)
+        5011 => U5011,  // MLDSA-87 Signature (4627) + RSA3072(384)
+        5139 => U5139,  // MLDSA-87 Signature (4627) + RSA4096(512)
+
+    }   
 
     // SLH-DSA sizes
     impl_array_sizes! {
